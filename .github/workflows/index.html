@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Beautiful Website</title>
+
+   
+</head>
+<body>
+    <script>
+        /*!
+Pixelated Background
+Copyright (c) 2023 by Wakana Y.K. (https://codepen.io/wakana-k/pen/GRegEgq)
+*/
+"use strict";
+console.clear();
+
+var root = document.querySelector(":root");
+function spotlight(e) {
+  root.style.setProperty("--x", e.pageX + "px");
+  root.style.setProperty("--y", e.pageY + "px");
+}
+window.addEventListener("pointermove", spotlight);
+window.addEventListener("pointerdown", spotlight);
+
+    </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400&display=swap");
+:root {
+  --x: 50%;
+  --y: 50%;
+  --radius: 30vmin;
+  --blur: 3vmax;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  background-color: black;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+  overflow: hidden;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Lexend", serif;
+  text-align: center;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  z-index: 1;
+}
+h1 {
+  font-size: 7vw;
+  color: white;
+  text-shadow: 1px 1px 1vw rgba(0, 0, 0, 0.3);
+}
+#bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#bg_focus {
+  mask-image: radial-gradient(
+    circle 50vmin at var(--x) var(--y),
+    black var(--radius),
+    transparent calc(var(--radius) + var(--blur)),
+    transparent
+  );
+}
+#bg_pixelate {
+  image-rendering: pixelated;
+}
+/*
+#bg img:nth-of-type(2) {
+  filter: hue-rotate(50deg);
+  animation-name: animation;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+@keyframes animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+*/
+
+    </style>
+   <!--
+Pixelated Background
+Copyright (c) 2023 by Wakana Y.K. (https://codepen.io/wakana-k/pen/GRegEgq)
+-->
+<!--
+Inspired by Andrii Rodzyk's "SVG Filter — Pixelate"
+https://codepen.io/rodzyk/pen/vYbPvaZ
+-->
+
+<div id="bg">
+  <img id="bg_pixelate" src='https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?crop=entropy&cs=tinysrgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDM1NTA1OTh8&ixlib=rb-4.0.3&q=80&w=40'>
+  <img id="bg_focus" src='https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?crop=entropy&cs=tinysrgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDM1NTA1OTh8&ixlib=rb-4.0.3&q=80&w=2000'>
+</div>
+
+<main>
+  <h1>Pixelated Background</h1>
+</main>
+</body>
+</html>
